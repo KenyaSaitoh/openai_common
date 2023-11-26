@@ -1,17 +1,7 @@
-// 初期化処理
-buildscript {
-    ext {
-        brain2docBaseName = "brain2doc"
-        brain2docVersion = "0.1.2"
-    }
-}
-
 // プラグイン設定
 plugins {
     id "java"
     id "eclipse"
-    id "com.github.johnrengelman.shadow" version "7.0.0"
-    id "org.beryx.jlink" version "3.0.0"
 }
 
 // リポジトリ設定
@@ -57,32 +47,10 @@ processResources {
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
 }
 
-jar {
-    manifest {
-        attributes "Main-Class": "pro.kensait.brain2doc.Main"
-    }
-}
-
-application {
-    mainClass = "pro.kensait.brain2doc.Main"
-}
-
 // Eclipseプラグイン設定
 eclipse {
     classpath {
         defaultOutputDir = file("bin")
-    }
-}
-
-shadowJar {
-    archiveBaseName.set(brain2docBaseName)
-    archiveVersion.set(brain2docVersion)
-    archiveClassifier.set("")
-    doLast {
-        copy {
-            from "build/libs/${brain2docBaseName}-${brain2docVersion}.jar"
-            into "${rootDir}/releases"
-        }
     }
 }
 
