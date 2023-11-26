@@ -1,0 +1,96 @@
+// 初期化処理
+buildscript {
+    ext {
+        brain2docBaseName = "brain2doc"
+        brain2docVersion = "0.1.2"
+    }
+}
+
+// プラグイン設定
+plugins {
+    id "java"
+    id "eclipse"
+    id "com.github.johnrengelman.shadow" version "7.0.0"
+    id "org.beryx.jlink" version "3.0.0"
+}
+
+// リポジトリ設定
+repositories {
+    mavenCentral()
+}
+
+// 文字コード設定
+def defaultEncoding = "UTF-8"
+tasks.withType(AbstractCompile).each { it.options.encoding = defaultEncoding }
+
+// 依存関係設定
+dependencies {
+    implementation "com.fasterxml.jackson.core:jackson-core:2.15.2"
+    implementation "com.fasterxml.jackson.core:jackson-annotations:2.15.2"
+    implementation "com.fasterxml.jackson.core:jackson-databind:2.15.2"
+    implementation "org.yaml:snakeyaml:2.2"
+    testImplementation "org.junit.jupiter:junit-jupiter:5.9.3"
+}
+
+// ソースフォルダの設定
+sourceSets {
+    main {
+        java {
+            srcDir "src/main/java"
+        }
+        resources {
+            srcDir "src/main/resources"
+        }
+    }
+    test {
+        java {
+            srcDir "src/test/java"
+        }
+        resources {
+            srcDir "src/test/resources"
+        }
+    }
+}
+
+// Gradle7.x対応
+processResources {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "pro.kensait.brain2doc.Main"
+    }
+}
+
+application {
+    mainClass = "pro.kensait.brain2doc.Main"
+}
+
+// Eclipseプラグイン設定
+eclipse {
+    classpath {
+        defaultOutputDir = file("bin")
+    }
+}
+
+shadowJar {
+    archiveBaseName.set(brain2docBaseName)
+    archiveVersion.set(brain2docVersion)
+    archiveClassifier.set("")
+    doLast {
+        copy {
+            from "build/libs/${brain2docBaseName}-${brain2docVersion}.jar"
+            into "${rootDir}/releases"
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+// ビルドキャッシュをクリアする
+task cleanBuildCache {
+    cleanBuildCache
+}
