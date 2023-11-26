@@ -1,7 +1,9 @@
-package pro.kensait.openai.api;
+package pro.kensait.openai.api.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Error {
     @JsonProperty(value = "message")
     private String message;

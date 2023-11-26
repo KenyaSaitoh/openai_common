@@ -1,4 +1,4 @@
-package pro.kensait.openai.api;
+package pro.kensait.openai.api.client;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

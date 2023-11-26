@@ -1,4 +1,4 @@
-package pro.kensait.openai.api;
+package pro.kensait.openai.api.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

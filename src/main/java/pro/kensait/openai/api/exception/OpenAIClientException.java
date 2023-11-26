@@ -1,6 +1,6 @@
-package pro.kensait.openai.exception;
+package pro.kensait.openai.api.exception;
 
-import pro.kensait.openai.api.ClientErrorBody;
+import pro.kensait.openai.api.entity.ClientErrorBody;
 
 public class OpenAIClientException extends RuntimeException {
     private ClientErrorBody clientErrorBody;

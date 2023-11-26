@@ -1,4 +1,6 @@
-package pro.kensait.openai.api;
+package pro.kensait.openai.api.client;
+
+import pro.kensait.openai.api.entity.SuccessResponseBody;
 
 public class ApiResult {
     private final SuccessResponseBody responseBody;

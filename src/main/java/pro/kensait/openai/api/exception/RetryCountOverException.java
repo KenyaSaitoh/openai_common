@@ -1,4 +1,4 @@
-package pro.kensait.openai.exception;
+package pro.kensait.openai.api.exception;
 
 public class RetryCountOverException extends RuntimeException {
     public RetryCountOverException() {

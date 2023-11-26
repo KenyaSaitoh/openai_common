@@ -1,4 +1,4 @@
-package pro.kensait.openai.api;
+package pro.kensait.openai.api.client;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -19,13 +19,17 @@ import java.util.Objects;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import pro.kensait.openai.exception.OpenAIClientException;
-import pro.kensait.openai.exception.OpenAIInsufficientQuotaException;
-import pro.kensait.openai.exception.OpenAIInvalidAPIKeyException;
-import pro.kensait.openai.exception.OpenAIRateLimitExceededException;
-import pro.kensait.openai.exception.OpenAITokenLimitOverException;
-import pro.kensait.openai.exception.RetryCountOverException;
-import pro.kensait.openai.exception.TimeoutException;
+import pro.kensait.openai.api.entity.ClientErrorBody;
+import pro.kensait.openai.api.entity.Message;
+import pro.kensait.openai.api.entity.RequestBody;
+import pro.kensait.openai.api.entity.SuccessResponseBody;
+import pro.kensait.openai.api.exception.OpenAIClientException;
+import pro.kensait.openai.api.exception.OpenAIInsufficientQuotaException;
+import pro.kensait.openai.api.exception.OpenAIInvalidAPIKeyException;
+import pro.kensait.openai.api.exception.OpenAIRateLimitExceededException;
+import pro.kensait.openai.api.exception.OpenAITokenLimitOverException;
+import pro.kensait.openai.api.exception.RetryCountOverException;
+import pro.kensait.openai.api.exception.TimeoutException;
 
 ;public class ApiClient {
     // 定数
