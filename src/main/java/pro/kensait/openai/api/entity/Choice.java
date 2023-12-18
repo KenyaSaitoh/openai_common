@@ -1,7 +1,9 @@
 package pro.kensait.openai.api.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Choice {
     @JsonProperty(value = "index")
     private Integer index;
@@ -12,13 +14,17 @@ public class Choice {
     @JsonProperty(value = "finish_reason")
     private String finishReason;
 
+    @JsonProperty(value = "logprobs")
+    private String logprobs;
+
     public Choice() {
     }
 
-    public Choice(Integer index, Message message, String finishReason) {
+    public Choice(Integer index, Message message, String finishReason, String logprobs) {
         this.index = index;
         this.message = message;
         this.finishReason = finishReason;
+        this.logprobs = logprobs;
     }
 
     public Integer getIndex() {
@@ -45,9 +51,17 @@ public class Choice {
         this.finishReason = finishReason;
     }
 
+    public String getLogprobs() {
+        return logprobs;
+    }
+
+    public void setLogprobs(String logprobs) {
+        this.logprobs = logprobs;
+    }
+
     @Override
     public String toString() {
-        return "Choice [index=" + index + ", message=" + message + ", finishReason="
-                + finishReason + "]";
+        return "Choice [index=" + index + ", message=" + message + ", finishReason=" + finishReason
+                + ", logprobs=" + logprobs + "]";
     }
 }
