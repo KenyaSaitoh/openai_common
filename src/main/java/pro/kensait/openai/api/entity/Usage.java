@@ -2,8 +2,10 @@ package pro.kensait.openai.api.entity;
 
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Usage {
     @JsonProperty(value = "prompt_tokens")
     private Integer promptTokens;
