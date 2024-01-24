@@ -108,7 +108,6 @@ import pro.kensait.openai.api.exception.TimeoutException;
                 throw oe;
 
             } catch(TimeoutException te) {
-                System.out.print("[TIME_OUT]");
                 if (count == retryCount) break;
                 // タイムアウトの場合はリトライ
                 count++;

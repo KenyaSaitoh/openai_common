@@ -42,8 +42,8 @@ sourceSets {
     }
 }
 
-// Gradle7.x対応
-processResources {
+// リソース競合時の処理を設定（Gradle7.x対応）
+tasks.withType(ProcessResources) {
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
 }
 
